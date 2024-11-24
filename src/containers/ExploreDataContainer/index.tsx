@@ -1,3 +1,4 @@
+import FormSearchDynamic from "@/components/organisms/FormSearchDynamic";
 import Image from "next/image";
 import React, { FC } from "react";
 
@@ -24,7 +25,7 @@ const ExploreDataContainer: FC<ExploreDataContainerProps> = ({}) => {
           <div className="text-center text-gray-500">Find your next career at companies like HubSpot, Nike, and Dropbox</div>
         </div>
         <div>
-          <div>Form Search</div>
+          <div><FormSearchDynamic/></div>
         </div>
       </div>
       <div className="mt-20 mb-16 px-32 flex flex-row items-start gap-10">
