@@ -1,15 +1,16 @@
 import FormFilterDynamic from "@/components/organisms/FormFilterDynamic";
 import FormSearchDynamic from "@/components/organisms/FormSearchDynamic";
+import { filterFormType } from "@/types";
 import Image from "next/image";
 import React, { FC } from "react";
 
 interface ExploreDataContainerProps {
   formFilter?: any;
   onSubmitFilter: (val: any) => Promise<void>;
-  filterForms?: any;
+  filterForms: filterFormType[];
 }
 
-const ExploreDataContainer: FC<ExploreDataContainerProps> = ({formFilter, onSubmitFilter, filterForms}) => {
+const ExploreDataContainer: FC<ExploreDataContainerProps> = ({ formFilter, onSubmitFilter, filterForms }) => {
   return (
     <>
       <div className="bg-gray-200 px-32 pt-16 pb-14">
@@ -26,11 +27,15 @@ const ExploreDataContainer: FC<ExploreDataContainerProps> = ({formFilter, onSubm
           <div className="text-center text-gray-500">Find your next career at companies like HubSpot, Nike, and Dropbox</div>
         </div>
         <div>
-          <div><FormSearchDynamic/></div>
+          <div>
+            <FormSearchDynamic />
+          </div>
         </div>
       </div>
       <div className="mt-20 mb-16 px-32 flex flex-row items-start gap-10">
-        <div className="w-1/5"><FormFilterDynamic formFilter={formFilter}onSubmitFilter={onSubmitFilter} filterForms={[]}/></div>
+        <div className="w-1/5">
+          <FormFilterDynamic formFilter={formFilter} onSubmitFilter={onSubmitFilter} filterForms={filterForms} />
+        </div>
         <div className="w-4/5">
           <div className="mb-8">
             <div className="text-xl font-semibold">All Jobs</div>
