@@ -9,9 +9,14 @@ interface ExploreDataContainerProps {
   formFilter?: any;
   onSubmitFilter: (val: any) => Promise<void>;
   filterForms: filterFormType[];
+  loading: boolean;
+  title: string;
+  subtitle: string;
+  data: any[];
+  type: "job" | "company";
 }
 
-const ExploreDataContainer: FC<ExploreDataContainerProps> = ({ formFilter, onSubmitFilter, filterForms }) => {
+const ExploreDataContainer: FC<ExploreDataContainerProps> = ({ formFilter, onSubmitFilter, filterForms, loading, title, subtitle, data, type }) => {
   return (
     <>
       <div className="bg-gray-200 px-32 pt-16 pb-14">
@@ -19,13 +24,13 @@ const ExploreDataContainer: FC<ExploreDataContainerProps> = ({ formFilter, onSub
           <div className="mx-auto mb-11 text-center flex justify-center gap-2">
             <span className="text-5xl font-semibold">Find Your</span>
             <div className="relative">
-              <span className="text-5xl font-semibold text-primary">dream job</span>
+              <span className="text-5xl font-semibold text-primary">{title}</span>
               <div className="absolute top-10 w-[220px] h-10">
                 <Image src="/images/pattern2.png" alt="/images/pattern2.png" fill objectFit="contain" />
               </div>
             </div>
           </div>
-          <div className="text-center text-gray-500">Find your next career at companies like HubSpot, Nike, and Dropbox</div>
+          <div className="text-center text-gray-500">{subtitle}</div>
         </div>
         <div>
           <div>
@@ -43,7 +48,25 @@ const ExploreDataContainer: FC<ExploreDataContainerProps> = ({ formFilter, onSub
             <div className="text-muted-foreground">Showing 73 Result</div>
 
             <div className="grid grid-cols-1 gap-7">
-              <JobCard applicants={5} categories={['Marketing', 'Design']} desc="lorem" image="/images/company2.png" jobType="Full-Time" location="Paris, France" name="Social Media Assistant" needs={10} type="Agency"/>
+              {loading ? (
+                <div>loading...</div>
+              ) : (
+                <>
+                  {type === "job" ? (
+                    <>
+                      {data?.map((item: any, i: number) => (
+                        <JobCard key={i} {...item} />
+                      ))}
+                    </>
+                  ) : (
+                    <>
+                      {data?.map((item: any, i: number) => (
+                        <div key={i}>Company Card</div>
+                      ))}
+                    </>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
