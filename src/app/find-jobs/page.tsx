@@ -7,13 +7,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { filterFormType, JobType } from "@/types";
-import { CATEGORIES_option } from "@/contants";
+import { CATEGORIES_OPTIONS } from "@/contants";
 
 const FILTER_FORMS: filterFormType[] = [
   {
     name: "categories",
     label: "Categories",
-    items: CATEGORIES_option,
+    items: CATEGORIES_OPTIONS,
   },
 ];
 

@@ -19,7 +19,7 @@ export const LOCATION_OPTIONS: optionType[] = [
   },
 ];
 
-export const CATEGORIES_option = [
+export const CATEGORIES_OPTIONS = [
   {
     id: "recents",
     label: "Recents",
