@@ -5,12 +5,16 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { useRouter } from "next/navigation";
 
 interface JobCardProps extends JobType {}
 
 const JobCard: FC<JobCardProps> = ({ applicants, categories, desc, image, jobType, location, name, needs, type }) => {
+
+  const router = useRouter()
+
   return (
-    <div className="w-full border mb-5 p-6 border-border flex flex-row justify-between items-center">
+    <div onClick={() => router.push('/detail/job/1')} className="w-full border mb-5 p-6 border-border flex flex-row justify-between items-center">
       <div className="flex flex-row items-start gap-6">
         <div>
           <Image src={image} alt={image} width={64} height={64} />
