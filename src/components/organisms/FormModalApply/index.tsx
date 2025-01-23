@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
 import { formApplySchema } from "@/lib/form-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
@@ -65,7 +66,82 @@ const FormModalApply: FC<FormModalApplyProps> = ({}) => {
                     </FormItem>
                   )}
                 />
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter your email" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="previousJobTitle"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Current of previous job title</FormLabel>
+                      <FormControl>
+                        <Input placeholder="What's your current or previous job title" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
+
+              <Separator />
+
+              <h2 className="font-semibold uppercase">links</h2>
+
+              <div className="grid grid-cols-2 gap-6">
+                <FormField
+                  control={form.control}
+                  name="linkedIn"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>LinkedIn URL</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Link to your LinkedIn URL" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="portfolio"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Portfolio URL</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Link to your Portolio URL" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <FormField
+                  control={form.control}
+                  name="coverLetter"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Additional information</FormLabel>
+                      <FormControl>
+                        <Textarea placeholder="Add a cover letter or anything else you want to share" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <Button className="w-full">Apply</Button>
             </form>
           </Form>
         </div>

@@ -14,7 +14,7 @@ export const formApplySchema = z.object({
   email: z.string({ required_error: "Email is required" }).email({ message: "Email not valid" }),
   phone: z.string().min(6, { message: "Phone have min 6 characters" }),
   previousJobTitle: z.string(),
-  linkedln: z.string(),
+  linkedIn: z.string(),
   portfolio: z.string(),
   coverLetter: z.string(),
 });
