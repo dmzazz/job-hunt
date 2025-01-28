@@ -12,6 +12,7 @@ import Image from "next/image";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import UploadField from "../UploadField";
 
 interface FormModalApplyProps {}
 
@@ -81,6 +82,19 @@ const FormModalApply: FC<FormModalApplyProps> = ({}) => {
                 />
                 <FormField
                   control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Phone Number</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter your phone number" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
                   name="previousJobTitle"
                   render={({ field }) => (
                     <FormItem>
@@ -128,20 +142,23 @@ const FormModalApply: FC<FormModalApplyProps> = ({}) => {
               </div>
 
               <FormField
-                  control={form.control}
-                  name="coverLetter"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Additional information</FormLabel>
-                      <FormControl>
-                        <Textarea placeholder="Add a cover letter or anything else you want to share" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                control={form.control}
+                name="coverLetter"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Additional information</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="Add a cover letter or anything else you want to share" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-                <Button className="w-full">Apply</Button>
+              <UploadField form={form} />
+
+              <Button className="w-full">Apply</Button>
+
             </form>
           </Form>
         </div>
