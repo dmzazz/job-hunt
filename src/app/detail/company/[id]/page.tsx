@@ -1,5 +1,7 @@
+import LatestJobs from "@/components/organisms/LatestJobs";
 import { Badge } from "@/components/ui/badge";
-import { FacebookIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
@@ -11,7 +13,7 @@ interface DetailCompanyProps {}
 
 const DetailCompany: FC<DetailCompanyProps> = ({}) => {
   return (
-    <div>
+    <>
       <div className="bg-slate-100 px-32 pt-16 pb-14">
         <div className="infline-flex gap-2 text-sm text-muted-foreground">
           <Link className="hover:underline hover:text-black" href="/">
@@ -104,39 +106,64 @@ const DetailCompany: FC<DetailCompanyProps> = ({}) => {
             </div>
           </div>
           <div>
-            <div className="text-3xl font-semibold mb-4">
-              Contact
-            </div>
+            <div className="text-3xl font-semibold mb-4">Contact</div>
             <div className="flex items-center gap-5 w-[400px] flex-wrap">
               <div className="p-2 border border-primary text-primary w-max inline-flex items-center gap-3 font-semibold">
-                <FacebookIcon/>
+                <FacebookIcon />
                 <span className="text-sm">https://facebook.com/twitter</span>
               </div>
               <div className="p-2 border border-primary text-primary w-max inline-flex items-center gap-3 font-semibold">
-                <TwitterIcon/>
+                <TwitterIcon />
                 <span className="text-sm">https://twitter.com/twitter</span>
               </div>
               <div className="p-2 border border-primary text-primary w-max inline-flex items-center gap-3 font-semibold">
-                <LinkedinIcon/>
+                <LinkedinIcon />
                 <span className="text-sm">https://linkedin.com/twitter</span>
               </div>
             </div>
           </div>
         </div>
         <div className="w-1/4">
-          <div className="text-3xl font-semibold mb-4">
-            Tech Stack
-          </div>
-          <div className="text-gray-500 text-sm">
-            Learn about the technology and tools that pattern uses.
-          </div>
+          <div className="text-3xl font-semibold mb-4">Tech Stack</div>
+          <div className="text-gray-500 text-sm">Learn about the technology and tools that pattern uses.</div>
           <div className="mt-5 inline-flex gap-4">
             <Badge>Javascript</Badge>
             <Badge>HTML</Badge>
           </div>
         </div>
       </div>
-    </div>
+
+      <div className="px-32">
+        <Separator />
+        <div className="my-16">
+          <div className="text-3xl font-semibold mb-4">Teams</div>
+          <div className="grid grid-cols-5 gap-5 mt-5">
+            {[0, 1, 2, 3, 4].map((i: number) => (
+              <div key={i} className="border border-border px-3 py-5">
+                <div className="w-16 h-16 rounded-full mx-auto bg-gray-300" />
+
+                <div className="text-center my-4">
+                  <div className="font-semibold text-sm">Hariyanto</div>
+                  <div className="text-gray-500 text-xs">CEO & CO-Founder</div>
+                </div>
+
+                <div className="mx-auto w-max">
+                  <div className="inline-flex gap-2">
+                    <InstagramIcon className="w-4 h-4 text-gray-500" />
+                    <LinkedinIcon className="w-4 h-4 text-gray-500" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <Separator />
+      </div>
+      <div className="px-32">
+        <LatestJobs/>
+      </div>
+    </>
+
   );
 };
 
