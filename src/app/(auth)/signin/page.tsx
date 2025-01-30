@@ -5,6 +5,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { formSignInSchema } from "@/lib/form-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import React, { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -53,6 +54,11 @@ const SignInPage: FC<SignInPageProps> = ({}) => {
           />
 
           <Button type="submit" className="w-full">Sign in</Button>
+
+          <div className="text-gray-500 text-sm mt-6">
+            Don&apos;t have an account? {" "}
+            <Link href="/signup" className="text-primary font-medium">Sign Up</Link>
+          </div>
         </form>
       </Form>
     </div>
