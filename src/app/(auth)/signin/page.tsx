@@ -9,6 +9,9 @@ import Link from "next/link";
 import React, { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { signIn } from "next-auth/react";
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 interface SignInPageProps {}
 
@@ -17,8 +20,27 @@ const SignInPage: FC<SignInPageProps> = ({}) => {
     resolver: zodResolver(formSignInSchema),
   });
 
-  const onSubmit = (val: z.infer<typeof formSignInSchema>) => {
-    console.log(val);
+  const {toast} = useToast();
+  const router = useRouter()
+
+  const onSubmit = async (val: z.infer<typeof formSignInSchema>) => {
+    const authenticated = await signIn("credentials", {
+      ...val,
+      redirect: false,
+    });
+
+    console.log(authenticated);
+
+    if (authenticated?.error) {
+      toast({
+        title: "Error",
+        description: "Email or password maybe wrong",
+      });
+
+      return
+    }
+
+    router.push('/')
   };
   return (
     <div>
@@ -53,11 +75,15 @@ const SignInPage: FC<SignInPageProps> = ({}) => {
             )}
           />
 
-          <Button type="submit" className="w-full">Sign in</Button>
+          <Button type="submit" className="w-full">
+            Sign in
+          </Button>
 
           <div className="text-gray-500 text-sm mt-6">
-            Don&apos;t have an account? {" "}
-            <Link href="/signup" className="text-primary font-medium">Sign Up</Link>
+            Don&apos;t have an account?{" "}
+            <Link href="/signup" className="text-primary font-medium">
+              Sign Up
+            </Link>
           </div>
         </form>
       </Form>
