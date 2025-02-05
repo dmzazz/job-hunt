@@ -3,6 +3,7 @@ import Navbar from "@/components/layouts/Navbar";
 import type { Metadata } from "next";
 import { Epilogue } from "next/font/google";
 import "../globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const epilogue = Epilogue({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <Toaster />
       </body>
     </html>
   );

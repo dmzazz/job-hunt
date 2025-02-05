@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Epilogue } from "next/font/google";
 import "../globals.css";
 import Image from "next/image";
+import { Toaster } from "@/components/ui/toaster";
 
 const epilogue = Epilogue({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function AuthRootLayout({
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">{children}</div>
           </div>
         </main>
+        <Toaster/>
       </body>
     </html>
   );
