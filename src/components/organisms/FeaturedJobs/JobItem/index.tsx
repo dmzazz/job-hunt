@@ -1,11 +1,11 @@
 import { Badge } from "@/components/ui/badge";
-import { categoryJobType, JobType } from "@/types";
+import { JobType } from "@/types";
 import Image from "next/image";
-import React, { FC } from "react";
+import { FC } from "react";
 
 interface JobItemProps extends JobType {}
 
-const JobItem: FC<JobItemProps> = ({ categories, desc, image, jobType, location, name, type }) => {
+const JobItem: FC<JobItemProps> = ({ category, desc, image, jobType, location, name, type }) => {
   return (
     <div className="border border-border p-6 cursor-pointer">
       <div className="flex flex-row justify-between items-start">
@@ -21,7 +21,7 @@ const JobItem: FC<JobItemProps> = ({ categories, desc, image, jobType, location,
       </div>
       <div className="space-x-2">
         <Badge variant="outline" className="rounded border-primary bg-primary/5 text-primary">
-          {categories.name}
+          {category.name}
         </Badge>
       </div>
     </div>

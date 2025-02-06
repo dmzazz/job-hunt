@@ -58,7 +58,7 @@ export const parsingJobs = async (data: any, error: any, isLoading: boolean) => 
           id: item.id,
           name: item.roles,
           applicants: item.applicants,
-          categories: item.CategoryJob,
+          category: item.CategoryJob,
           desc: item.description,
           jobType: item.jobType,
           image: imageUrl,
