@@ -6,7 +6,7 @@ import React, { FC } from "react";
 
 interface JobItemProps extends JobType {}
 
-const JobItem: FC<JobItemProps> = ({ category, image, jobType, location, name, type }) => {
+const JobItem: FC<JobItemProps> = ({ category, image, jobType, location, name, type, skills }) => {
   return (
     <div className="border border-border p-8 flex flex-row items-start gap-6 cursor-pointer">
       <div>
@@ -20,9 +20,11 @@ const JobItem: FC<JobItemProps> = ({ category, image, jobType, location, name, t
         <div className="h-5 inline-flex gap-2 items-center">
           <Badge variant="secondary">{jobType}</Badge>
           <Separator orientation="vertical" />
-          <Badge variant="outline" className="rounded border-primary bg-primary/5 text-primary">
-            {category.name}
-          </Badge>
+          {skills.map((item: string, i: number) => (
+            <Badge variant="outline" className="rounded border-primary bg-primary/5 text-primary" key={item + i}>
+              {item}
+            </Badge>
+          ))}
         </div>
       </div>
     </div>
