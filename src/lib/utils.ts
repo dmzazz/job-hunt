@@ -2,7 +2,7 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 import bcrypt from "bcryptjs";
-import { categoryJobType, JobType } from "@/types";
+import { categoryJobType, JobType, optionType } from "@/types";
 import { supabasePublicUrl } from "./supabase";
 
 export function cn(...inputs: ClassValue[]) {
@@ -65,11 +65,24 @@ export const parsingJobs = async (data: any, error: any, isLoading: boolean) => 
           location: item.Company?.CompanyOverview[0]?.location,
           needs: item.needs,
           type: item.CategoryJob.name,
-          skills: item.requiredSkills
+          skills: item.requiredSkills,
         };
         return job;
       })
     );
+  }
+
+  return [];
+};
+
+export const parsingCategoriesToOptions = (data: any, error: any, isLoading: boolean) => {
+  if (!isLoading && !error && data) {
+    return data.map((item: any) => {
+      return {
+        id: item.id,
+        label: item.name,
+      } as optionType;
+    }) as optionType[];
   }
 
   return [];
