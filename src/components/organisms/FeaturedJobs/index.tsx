@@ -1,29 +1,15 @@
 "use client";
 
 import TitleSection from "@/components/atoms/TitleSection";
-import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
-import JobItem from "./JobItem";
-import useSWR from "swr";
-import { fetcher, parsingJobs } from "@/lib/utils";
+import useFeaturedJobs from "@/hooks/useFeaturedJobs";
 import { JobType } from "@/types";
+import { FC } from "react";
+import JobItem from "./JobItem";
 
 interface FeaturedJobsProps {}
 
 const FeaturedJobs: FC<FeaturedJobsProps> = ({}) => {
-  const { data, error, isLoading } = useSWR("/api/jobs/featured", fetcher);
-
-  const [jobs, setJobs] = useState<JobType[]>([]);
-
-  const parseJobs = useCallback(async () => {
-    const parseData = await parsingJobs(data, error, isLoading);
-    setJobs(parseData);
-  }, [data, error, isLoading]);
-
-  // const jobs = useMemo(() => parsingJobs(data, error, isLoading), [data, error, isLoading]);
-
-  useEffect(() => {
-    parseJobs();
-  }, [data, error, isLoading]);
+  const { jobs, error, isLoading } = useFeaturedJobs();
 
   return (
     <div className="mt-32 mb-10">
