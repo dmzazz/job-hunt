@@ -2,7 +2,7 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 import bcrypt from "bcryptjs";
-import { categoryJobType, JobType, optionType } from "@/types";
+import { categoryJobType, CompanyType, JobType, optionType } from "@/types";
 import { supabasePublicUrl } from "./supabase";
 
 export function cn(...inputs: ClassValue[]) {
@@ -75,11 +75,49 @@ export const parsingJobs = async (data: any, error: any, isLoading: boolean) => 
   return [];
 };
 
-export const parsingCategoriesToOptions = (data: any, error: any, isLoading: boolean) => {
+export const parsingCompanies = async (data: any, error: any, isLoading: boolean) => {
+  if (!isLoading && !error && data) {
+    return await Promise.all(
+      data.map(async (item: any) => {
+        let imageName = item.CompanyOverview[0]?.image;
+        let imageUrl;
+
+        if (imageName) {
+          imageUrl = await supabasePublicUrl(imageName, "company");
+        } else {
+          imageUrl = "/images/company.png";
+        }
+
+        const companyDetail = item.CompanyOverview[0];
+
+        const company: CompanyType = {
+          id: item.id,
+          name: companyDetail?.name,
+          image: imageUrl,
+          dateFounded: companyDetail?.dateFounded,
+          description: companyDetail?.description,
+          employee: companyDetail?.employee,
+          industry: companyDetail?.industry,
+          location: companyDetail?.location,
+          techStack: companyDetail?.techStack,
+          website: companyDetail?.website,
+          sosmed: item.CompanySocialMedia[0],
+          teams: item?.CompanyTeam,
+          totalJobs: item._count.Job,
+        };
+        return company;
+      })
+    );
+  }
+
+  return [];
+};
+
+export const parsingCategoriesToOptions = (data: any, error: any, isLoading: boolean, isIndustry?: boolean) => {
   if (!isLoading && !error && data) {
     return data.map((item: any) => {
       return {
-        id: item.id,
+        id: isIndustry ? item.name : item.id,
         label: item.name,
       } as optionType;
     }) as optionType[];
