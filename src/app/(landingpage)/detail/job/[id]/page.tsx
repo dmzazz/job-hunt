@@ -1,15 +1,13 @@
 import FormModalApply from "@/components/organisms/FormModalApply";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
-import Image from "next/image";
-import Link from "next/link";
-import React, { FC } from "react";
-import { BiCategory } from "react-icons/bi";
-import prisma from "../../../../../../lib/prisma";
 import { supabasePublicUrl } from "@/lib/supabase";
 import { dateFormat } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+import { BiCategory } from "react-icons/bi";
+import prisma from "../../../../../../lib/prisma";
 
 async function getDetailJob(id: string) {
   const data = await prisma.job.findFirst({
@@ -75,7 +73,7 @@ const DetailJobPage = async ({ params }: { params: { id: string } }) => {
               </div>
             </div>
           </div>
-          <FormModalApply />
+          <FormModalApply image={data.image} roles={data.roles!!} jobType={data.jobType!!} location={data?.Company?.CompanyOverview[0].location} id={data.id} />
         </div>
       </div>
       <div className="px-32 py-16 flex flex-row items-start gap-10">
