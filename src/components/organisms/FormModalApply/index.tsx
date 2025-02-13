@@ -23,7 +23,7 @@ interface FormModalApplyProps {
   roles: string | undefined;
   location: string | undefined;
   jobType: string | undefined;
-  id: string | undefined
+  id: string | undefined;
 }
 
 const FormModalApply: FC<FormModalApplyProps> = ({ image, roles, location, jobType, id }) => {
@@ -31,15 +31,15 @@ const FormModalApply: FC<FormModalApplyProps> = ({ image, roles, location, jobTy
     resolver: zodResolver(formApplySchema),
   });
 
-  const {toast} = useToast()
-  const router = useRouter()
+  const { toast } = useToast();
+  const router = useRouter();
 
   const { data: session } = useSession();
 
   const onSubmit = async (val: z.infer<typeof formApplySchema>) => {
     try {
-      const {filename, error} = await supabaseUploadFile(val.resume, 'applicant')
-      
+      const { filename, error } = await supabaseUploadFile(val.resume, "applicant");
+
       const reqData = {
         userId: session?.user.id,
         jobId: id,
@@ -48,47 +48,40 @@ const FormModalApply: FC<FormModalApplyProps> = ({ image, roles, location, jobTy
         linkedIn: val.linkedIn,
         phone: val.phone,
         portfolio: val.portfolio,
-        previousJobTitle: val.previousJobTitle
-      }
+        previousJobTitle: val.previousJobTitle,
+      };
 
       if (error) {
-        throw "Error"
+        throw "Error";
       }
 
-      await fetch('/api/jobs/apply', {
+      await fetch("/api/jobs/apply", {
         method: "POST",
-        headers: {'Content-Type' : 'application/json'},
-        body: JSON.stringify(reqData)
-      })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reqData),
+      });
 
       await toast({
-        title: 'Success',
-        description: 'Apply job success'
-      })
+        title: "Success",
+        description: "Apply job success",
+      });
 
-      router.replace('/')
-
+      router.replace("/");
     } catch (error) {
-      console.log(error)
+      console.log(error);
       toast({
-        title: 'Error',
-        description: "Please try again"
-      })
+        title: "Error",
+        description: "Please try again",
+      });
     }
   };
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        {session ? (
-          <Button size="lg" className="text-lg px-12 py-6">
-            Apply
-          </Button>
-        ) : (
-          <Button variant="outline" disabled>
-            Sign In First
-          </Button>
-        )}
+        <Button size="lg" className="text-lg px-12 py-6">
+          Apply
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px]">
         <div>

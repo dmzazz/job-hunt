@@ -5,7 +5,7 @@ import prisma from "../../../../../lib/prisma";
 import { comparePassword } from "@/lib/utils";
 
 export const authOptions: NextAuthOptions = {
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXT_AUTH_SECRET,
   providers: [
     CredentialsProvider({
       name: "Credentials",
