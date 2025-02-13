@@ -24,9 +24,10 @@ interface FormModalApplyProps {
   location: string | undefined;
   jobType: string | undefined;
   id: string | undefined;
+  isApply: number | undefined;
 }
 
-const FormModalApply: FC<FormModalApplyProps> = ({ image, roles, location, jobType, id }) => {
+const FormModalApply: FC<FormModalApplyProps> = ({ image, roles, location, jobType, id, isApply }) => {
   const form = useForm<z.infer<typeof formApplySchema>>({
     resolver: zodResolver(formApplySchema),
   });
@@ -67,6 +68,7 @@ const FormModalApply: FC<FormModalApplyProps> = ({ image, roles, location, jobTy
       });
 
       router.replace("/");
+      
     } catch (error) {
       console.log(error);
       toast({

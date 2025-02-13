@@ -13,7 +13,7 @@ model Applicant {
   jobId           String?
   previousJobTite String
   phone           String
-  linkedln        String
+  linkedin        String
   portfolio       String
   coverLetter     String
   resume          String

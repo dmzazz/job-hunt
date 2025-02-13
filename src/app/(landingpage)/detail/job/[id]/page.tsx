@@ -96,7 +96,7 @@ const DetailJobPage = async ({ params }: { params: { id: string } }) => {
                   Applied
                 </Button>
               ) : (
-                <FormModalApply image={data.image} roles={data.roles!!} jobType={data.jobType!!} location={data?.Company?.CompanyOverview[0].location} id={data.id} isApply={data.isApply} />
+                <FormModalApply image={data.image} roles={data.roles!!} jobType={data.jobType!!} location={data?.Company?.CompanyOverview[0]?.location} id={data.id} isApply={data.isApply} />
               )}
             </>
           ) : (
