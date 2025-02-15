@@ -19,7 +19,7 @@ const FormFilterDynamic: FC<FormFilterDynamicProps> = ({ filterForms, formFilter
         ))}
 
         <Button className="mt-5 w-full">Apply Filter</Button>
-        <Button variant="outline" className="mt-3 w-full">
+        <Button variant="outline" className="mt-3 w-full" onClick={() => formFilter.reset()}>
           Reset Filter
         </Button>
       </form>

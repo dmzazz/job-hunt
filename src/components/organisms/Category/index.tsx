@@ -20,9 +20,13 @@ const Category: FC<CategoryProps> = ({}) => {
     <div className="mt-32 mb-8">
       <TitleSection word1="Explore by" word2="category" />
       <div className="grid grid-cols-5 gap-9 mt-12">
-        {categories.map((item: categoryJobType) => (
+        {categories.length > 0 ? categories.map((item: categoryJobType) => (
           <CategoryItem key={item.id} name={item.name} totalJobs={item.totalJobs} />
-        ))}
+        )) : (
+          <>
+          <p>No jobs open</p>
+          </>
+        )}
       </div>
     </div>
   );

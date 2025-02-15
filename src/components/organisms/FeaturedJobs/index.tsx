@@ -15,9 +15,13 @@ const FeaturedJobs: FC<FeaturedJobsProps> = ({}) => {
     <div className="mt-32 mb-10">
       <TitleSection word1="Featured" word2="jobs" />
       <div className="grid grid-cols-4 gap-8 mt-12">
-        {jobs.map((item: JobType) => (
+        {jobs.length > 0 ? jobs.map((item: JobType) => (
           <JobItem key={item.id} {...item} />
-        ))}
+        )) : (
+          <>
+            <p>No jobs open</p>
+          </>
+        )}
       </div>
     </div>
   );
