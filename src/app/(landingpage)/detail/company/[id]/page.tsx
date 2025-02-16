@@ -54,7 +54,7 @@ const DetailCompany: FC<DetailCompanyProps> = async ({ params }) => {
 
   return (
     <>
-      {data && (
+      {data && data.CompanyOverview && (
         <>
           <div className="bg-slate-100 px-32 pt-16 pb-14">
             <div className="infline-flex gap-2 text-sm text-muted-foreground">
@@ -145,23 +145,25 @@ const DetailCompany: FC<DetailCompanyProps> = async ({ params }) => {
                 <div className="text-3xl font-semibold mb-3">Company Profile</div>
                 <div className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: data.CompanyOverview[0].description }}></div>
               </div>
-              <div>
-                <div className="text-3xl font-semibold mb-4">Contact</div>
-                <div className="flex items-center gap-5 w-[400px] flex-wrap">
-                  <div className="p-2 border border-primary text-primary w-max inline-flex items-center gap-3 font-semibold">
-                    <FacebookIcon />
-                    <span className="text-sm">{data.CompanySocialMedia[0].facebook}</span>
-                  </div>
-                  <div className="p-2 border border-primary text-primary w-max inline-flex items-center gap-3 font-semibold">
-                    <TwitterIcon />
-                    <span className="text-sm">{data.CompanySocialMedia[0].twitter}</span>
-                  </div>
-                  <div className="p-2 border border-primary text-primary w-max inline-flex items-center gap-3 font-semibold">
-                    <LinkedinIcon />
-                    <span className="text-sm">{data.CompanySocialMedia[0].linkedin}</span>
+              {data.CompanySocialMedia && (
+                <div>
+                  <div className="text-3xl font-semibold mb-4">Contact</div>
+                  <div className="flex items-center gap-5 w-[400px] flex-wrap">
+                    <div className="p-2 border border-primary text-primary w-max inline-flex items-center gap-3 font-semibold">
+                      <FacebookIcon />
+                      <span className="text-sm">{data.CompanySocialMedia[0].facebook}</span>
+                    </div>
+                    <div className="p-2 border border-primary text-primary w-max inline-flex items-center gap-3 font-semibold">
+                      <TwitterIcon />
+                      <span className="text-sm">{data.CompanySocialMedia[0].twitter}</span>
+                    </div>
+                    <div className="p-2 border border-primary text-primary w-max inline-flex items-center gap-3 font-semibold">
+                      <LinkedinIcon />
+                      <span className="text-sm">{data.CompanySocialMedia[0].linkedin}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
             <div className="w-1/4">
               <div className="text-3xl font-semibold mb-4">Tech Stack</div>
@@ -179,23 +181,25 @@ const DetailCompany: FC<DetailCompanyProps> = async ({ params }) => {
             <div className="my-16">
               <div className="text-3xl font-semibold mb-4">Teams</div>
               <div className="grid grid-cols-5 gap-5 mt-5">
-                {data.CompanyTeam.map((data: CompanyTeam) => (
-                  <div key={data.id} className="border border-border px-3 py-5">
-                    <div className="w-16 h-16 rounded-full mx-auto bg-gray-300" />
+                {data &&
+                  data.CompanyTeam &&
+                  data.CompanyTeam.map((data: CompanyTeam) => (
+                    <div key={data.id} className="border border-border px-3 py-5">
+                      <div className="w-16 h-16 rounded-full mx-auto bg-gray-300" />
 
-                    <div className="text-center my-4">
-                      <div className="font-semibold text-sm">{data.name}</div>
-                      <div className="text-gray-500 text-xs">{data.position}</div>
-                    </div>
+                      <div className="text-center my-4">
+                        <div className="font-semibold text-sm">{data.name}</div>
+                        <div className="text-gray-500 text-xs">{data.position}</div>
+                      </div>
 
-                    <div className="mx-auto w-max">
-                      <div className="inline-flex gap-2">
-                        <InstagramIcon className="w-4 h-4 text-gray-500" />
-                        <LinkedinIcon className="w-4 h-4 text-gray-500" />
+                      <div className="mx-auto w-max">
+                        <div className="inline-flex gap-2">
+                          <InstagramIcon className="w-4 h-4 text-gray-500" />
+                          <LinkedinIcon className="w-4 h-4 text-gray-500" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               </div>
             </div>
             <Separator />

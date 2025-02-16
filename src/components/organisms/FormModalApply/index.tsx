@@ -68,7 +68,6 @@ const FormModalApply: FC<FormModalApplyProps> = ({ image, roles, location, jobTy
       });
 
       router.replace("/");
-      
     } catch (error) {
       console.log(error);
       toast({

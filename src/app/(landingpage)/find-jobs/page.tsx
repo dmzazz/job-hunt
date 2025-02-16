@@ -1,15 +1,13 @@
 "use client";
 
 import ExploreDataContainer from "@/containers/ExploreDataContainer";
-import { formFilterSchema } from "@/lib/form-schema";
-import React, { useEffect, useMemo, useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { filterFormType, JobType } from "@/types";
-import { CATEGORIES_OPTIONS } from "@/contants";
 import useCategoryJobFilter from "@/hooks/useCategoryJobFilter";
 import useJobs from "@/hooks/useJobs";
+import { formFilterSchema } from "@/lib/form-schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 export default function FindJobsPage() {
   const formFilter = useForm<z.infer<typeof formFilterSchema>>({

@@ -9,8 +9,8 @@ import Link from "next/link";
 import { BiCategory } from "react-icons/bi";
 import prisma from "../../../../../../lib/prisma";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { Button } from "@/components/ui/button";
+import { authOptions } from "@/lib/authOptions";
 
 async function getDetailJob(id: string) {
   const session = await getServerSession(authOptions);
@@ -46,18 +46,20 @@ async function getDetailJob(id: string) {
     },
   });
 
+  const benefits: any = data?.benefits;
+
   if (!session) {
-    return { ...data, image: imageUrl, benefits: data?.benefits, applicants, needs, isApply: 0 };
+    return { ...data, image: imageUrl, benefits, applicants, needs, isApply: 0 };
   }
 
-  return { ...data, image: imageUrl, benefits: data?.benefits, applicants, needs, isApply };
+  return { ...data, image: imageUrl, benefits, applicants, needs, isApply };
 }
 
 const DetailJobPage = async ({ params }: { params: { id: string } }) => {
   const data = await getDetailJob(params.id);
   const session = await getServerSession(authOptions);
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <>
@@ -194,7 +196,7 @@ const DetailJobPage = async ({ params }: { params: { id: string } }) => {
         </div>
 
         <div className="grid grid-cols-3 gap-5">
-          {data.benefits?.map((item: any, i: number) => (
+          {data?.benefits?.map((item: any, i: number) => (
             <div key={i}>
               <BiCategory className="w-12 h-12 text-primary" />
               <div className="font-semibold text-xl mt-6">{item.benefit}</div>

@@ -30,12 +30,14 @@ const SignUpPage: FC<SignUpPageProps> = ({}) => {
         body: JSON.stringify(val),
       });
 
+      console.log(val);
+
       toast({
         title: "Success",
         description: "Create account success",
       });
 
-      router.push("/signin");
+      // router.push("/signin");
     } catch (error) {
       toast({
         title: "Error",
