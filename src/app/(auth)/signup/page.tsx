@@ -24,20 +24,27 @@ const SignUpPage: FC<SignUpPageProps> = ({}) => {
 
   const onSubmit = async (val: z.infer<typeof formSignUpSchema>) => {
     try {
-      await fetch("/api/user", {
+      const response = await fetch("/api/user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(val),
       });
 
-      console.log(val);
+      if (response.status === 200) {
+        toast({
+          title: "Success",
+          description: "Create account success",
+        });
 
-      toast({
-        title: "Success",
-        description: "Create account success",
-      });
-
-      // router.push("/signin");
+        setTimeout(() => {
+          router.push("/signin");
+        }, 2000);
+      } else if (val.email) {
+        toast({
+          title: "Error",
+          description: "Email already registered",
+        });
+      }
     } catch (error) {
       toast({
         title: "Error",
