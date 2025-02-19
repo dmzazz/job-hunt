@@ -14,7 +14,7 @@ const BannerSignUp: FC<BannerSignUpProps> = ({  }) => {
             Start posting <br /> jobs today
         </div>
         <div className="my-6">Start posting job for only $10</div>
-        <Button size='lg' variant='secondary' className='hover:text-primary'>
+        <Button size='lg' variant='secondary' className='mb-6 xl:mb-0 hover:text-primary'>
             Sign Up for free
         </Button>
      </div>

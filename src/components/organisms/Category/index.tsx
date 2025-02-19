@@ -19,7 +19,7 @@ const Category: FC<CategoryProps> = ({}) => {
   return (
     <div className="mt-32 mb-8">
       <TitleSection word1="Explore by" word2="category" />
-      <div className="grid grid-cols-5 gap-9 mt-12">
+      <div className="grid lg:grid-cols-5 gap-9 mt-12">
         {categories.length > 0 ? categories.map((item: categoryJobType) => (
           <CategoryItem key={item.id} name={item.name} totalJobs={item.totalJobs} />
         )) : (

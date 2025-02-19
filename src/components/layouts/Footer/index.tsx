@@ -13,8 +13,8 @@ const socialMediaImage = ["/images/soc-Facebook.png", "/images/soc-Instagram.png
 
 const Footer: FC<FooterProps> = ({}) => {
   return (
-    <div className="bg-slate-900 px-32 pt-16 pb-11">
-      <div className="flex flex-row items-start justify-between">
+    <div className="bg-slate-900 px-14 md:px-32 pt-16 pb-11">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div>
           <Image src="/images/logo.png" alt="/images/logo.png" width={160} height={36} />
           <div className="text-muted mt-8">
