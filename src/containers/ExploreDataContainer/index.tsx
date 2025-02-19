@@ -20,7 +20,7 @@ interface ExploreDataContainerProps {
 const ExploreDataContainer: FC<ExploreDataContainerProps> = ({ formFilter, onSubmitFilter, filterForms, loading, title, subtitle, data, type }) => {
   return (
     <>
-      <div className="bg-gray-200 px-32 pt-16 pb-14">
+      <div className="bg-gray-200 px-14 md:px-32 pt-16 pb-14">
         <div className="mb-10">
           <div className="mx-auto mb-11 text-center flex justify-center gap-2">
             <span className="text-5xl font-semibold">Find Your</span>
@@ -39,11 +39,11 @@ const ExploreDataContainer: FC<ExploreDataContainerProps> = ({ formFilter, onSub
           </div>
         </div>
       </div>
-      <div className="mt-20 mb-16 px-32 flex flex-row items-start gap-10">
-        <div className="w-1/5">
+      <div className="mt-20 mb-16 px-14 md:px-32 flex flex-col-reverse md:flex-row items-center md:items-start gap-10">
+        <div className="md:w-1/5">
           <FormFilterDynamic formFilter={formFilter} onSubmitFilter={onSubmitFilter} filterForms={filterForms} />
         </div>
-        <div className="w-4/5">
+        <div className="md:w-4/5">
           <div className="mb-8">
             <div className="text-xl font-semibold">All {type === "job" ? "jobs" : "Companies"}</div>
             <div className="text-muted-foreground">Showing {data.length} Result</div>

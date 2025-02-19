@@ -12,7 +12,7 @@ interface FormSearchDynamicProps {}
 const FormSearchDynamic: FC<FormSearchDynamicProps> = ({}) => {
   return (
     <div className="mx-auto w-max">
-      <div className="bg-background p-4 shadow-md inline-flex items-center gap-4 relative w-max z-10 text-center">
+      <div className="bg-background p-4 shadow-md flex flex-col lg:flex-row items-center gap-4 relative w-max z-10 text-center">
         <div className="inline-flex gap-3 items-center">
           <AiOutlineSearch className="w-6 h-6" />
           <Input className="py-5 w-[350px] border-none" placeholder="Job Title or Keyword" />

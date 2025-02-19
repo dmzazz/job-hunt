@@ -13,8 +13,8 @@ const JobCard: FC<JobCardProps> = ({ applicants, skills, image, jobType, locatio
   const router = useRouter();
 
   return (
-    <div onClick={() => router.push("/detail/job/" + id)} className="w-full border p-6 border-border flex flex-row justify-between items-center">
-      <div className="flex flex-row items-start gap-6">
+    <div onClick={() => router.push("/detail/job/" + id)} className="w-full border p-6 border-border flex flex-col lg:flex-row lg:justify-between lg:items-center">
+      <div className="flex flex-row items-start gap-2 lg:gap-6 mb-6 lg:mb-0">
         <div>
           <Image src={image} alt={image} width={64} height={64} />
         </div>
