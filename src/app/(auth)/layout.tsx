@@ -27,17 +27,17 @@ export default async function AuthRootLayout({
   return (
     <html lang="en">
       <body className={`${epilogue.className} relative overflow-x-hidden`}>
-        <main className="grid grid-cols-2">
-          <div className="relative h-screen">
+        <main className="md:grid md:grid-cols-2">
+          <div className="relative h-screen hidden md:block">
             <div className="absolute w-full h-full">
               <Image src="/images/bg-auth.png" alt="/images/bg-auth.png" fill objectFit="cover" objectPosition="top" />
             </div>
           </div>
           <div className="w-full relative">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">{children}</div>
+            <div className="p-10 md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">{children}</div>
           </div>
         </main>
-        <Toaster/>
+        <Toaster />
       </body>
     </html>
   );
