@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={`${epilogue.className} relative overflow-x-hidden`}>
         <AuthProvider>
           <Navbar />
-          <main>{children}</main>
+          <main className="mt-20 sm:mt-0">{children}</main>
           <Footer />
           <Toaster />
         </AuthProvider>
