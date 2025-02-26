@@ -58,7 +58,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
         <div className="bg-white border p-3 flex justify-between items-center rounded-xl">
           <Image src="/images/logo3.png" alt="Logo" width={160} height={36} />
 
-          {/* Toggle */}
+          {/* Toggle   */}
           <button onClick={toggleNavbar} className="p-2">
             {openNavbar ? <IoClose /> : <IoMenu />}
           </button>

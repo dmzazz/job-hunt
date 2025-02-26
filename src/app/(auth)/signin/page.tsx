@@ -20,8 +20,8 @@ const SignInPage: FC<SignInPageProps> = ({}) => {
     resolver: zodResolver(formSignInSchema),
   });
 
-  const {toast} = useToast();
-  const router = useRouter()
+  const { toast } = useToast();
+  const router = useRouter();
 
   const onSubmit = async (val: z.infer<typeof formSignInSchema>) => {
     const authenticated = await signIn("credentials", {
@@ -37,10 +37,10 @@ const SignInPage: FC<SignInPageProps> = ({}) => {
         description: "Email or password maybe wrong",
       });
 
-      return
+      return;
     }
 
-    router.push('/')
+    router.push("/");
   };
   return (
     <div>
