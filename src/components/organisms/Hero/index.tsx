@@ -8,10 +8,11 @@ const Hero: FC<HeroProps> = ({}) => {
   return (
     <div className="flex flex-row justify-between items-center">
       <div className="md:w-1/2">
-        <div className="text-7xl font-semibold text-slate-600 w-max relative">
+        <div className="text-5xl md:text-7xl font-semibold text-slate-600 w-max relative">
           Discover <br /> more than <br /> <span className="text-primary">5000 + Jobs</span>
         </div>
-        <Image src="/images/pattern2.png" alt="/images/pattern2.png" width={455} height={32} className="mb-5" />
+        <Image src="/images/pattern2.png" alt="/images/pattern2.png" width={455} height={32} className="hidden sm:block mb-5" />
+        <Image src="/images/pattern2.png" alt="/images/pattern2.png" width={300} height={32} className="sm:hidden mb-5" />
         <div className="text-muted-foreground text-lg">
           Great platform for the job seeker that searching for <br /> new career heights and passionate about startups.
         </div>

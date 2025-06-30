@@ -23,6 +23,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
   const toggleNavbar = () => setOpenNavbar(!openNavbar);
 
   return (
+   <>
     <header className="fixed sm:static top-0 w-full px-12 md:px-32 py-5 z-50">
       {/* Navbar Desktop */}
       <div className="hidden sm:flex items-center justify-between">
@@ -88,6 +89,9 @@ const Navbar: FC<NavbarProps> = ({}) => {
         )}
       </div>
     </header>
+
+    {openNavbar && <div className="bg-black opacity-50 w-full h-full fixed top-0 bottom-0 left-0 right-0 z-20"></div>}
+   </>
   );
 };
 
