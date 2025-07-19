@@ -59,7 +59,7 @@ const Footer: FC<FooterProps> = ({}) => {
       <Separator className="mt-20 mb-11 bg-gray-300" />
       <div className="flex flex-row items-center justify-between">
         <div className="text-slate-600">2024 @ JobHunter. All rights reserved.</div>
-        <div className="space-x-3">
+        <div className="sm:space-x-3">
           {socialMediaImage.map((item: string, i: number) => (
             <Image className="inline" src={item} alt={item} key={i} width={32} height={32} />
           ))}

@@ -12,7 +12,7 @@ const Hero: FC<HeroProps> = ({}) => {
           Discover <br /> more than <br /> <span className="text-primary">5000 + Jobs</span>
         </div>
         <Image src="/images/pattern2.png" alt="/images/pattern2.png" width={455} height={32} className="hidden sm:block mb-5" />
-        <Image src="/images/pattern2.png" alt="/images/pattern2.png" width={300} height={32} className="sm:hidden mb-5" />
+        <Image src="/images/pattern2.png" alt="/images/pattern2.png" width={250} height={32} className="sm:hidden mb-5" />
         <div className="text-muted-foreground text-lg">
           Great platform for the job seeker that searching for <br /> new career heights and passionate about startups.
         </div>

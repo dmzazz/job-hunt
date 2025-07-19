@@ -15,12 +15,12 @@ const FormSearch: FC<FormSearchProps> = ({}) => {
       <div className="mt-6 bg-background p-4 shadow-md flex-col lg:flex-row inline-flex items-center gap-4 relative w-max z-10">
         <div className="inline-flex gap-3 items-center">
           <AiOutlineSearch className="w-6 h-6" />
-          <Input className="py-8 w-[300px] border-none" placeholder="Job Title or Keyword" />
+          <Input className="py-8 w-[180px] sm:w-[300px] border-none" placeholder="Job Title or Keyword" />
         </div>
         <div className="inline-flex gap-3 items-center">
           <HiOutlineLocationMarker className="w-6 h-6" />
           <Select>
-            <SelectTrigger className="w-[300px] border-none text-gray-500 outline-none py-8">
+            <SelectTrigger className="w-[180px] sm:w-[300px] border-none text-gray-500 outline-none py-8">
               <SelectValue placeholder="Select a location" />
             </SelectTrigger>
             <SelectContent>
